@@ -1,4 +1,5 @@
 import { Player } from "./player";
+import { createWorld } from "./world";
 
 export class Game {
   canvas: HTMLCanvasElement;
@@ -9,6 +10,7 @@ export class Game {
   private lastTime: number = 0;
 
   player = new Player(this);
+  world = createWorld(this);
 
   constructor(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
     this.canvas = canvas;
@@ -31,6 +33,7 @@ export class Game {
 
   private render() {
     this.player.render();
+    this.world.render();
   }
 
   private frame = (currentTime: number = 0) => {
